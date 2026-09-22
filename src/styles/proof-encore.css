@@ -11,7 +11,7 @@
 .encore {
   position: relative;
   width: 100%;
-  background: var(--lav);
+  background: var(--cream);
   min-height: 260vh;
   margin: 0;
   padding: 0;
@@ -71,7 +71,7 @@
 .encore__veil {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(243, 238, 251, .22) 0%, rgba(243, 238, 251, 0) 42%, rgba(38, 24, 76, .18) 100%);
+  background: linear-gradient(to bottom, rgba(250, 247, 241, .22) 0%, rgba(250, 247, 241, 0) 42%, rgba(38, 24, 76, .18) 100%);
   opacity: var(--veil);
   pointer-events: none;
 }

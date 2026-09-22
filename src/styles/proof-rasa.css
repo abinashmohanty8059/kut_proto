@@ -3,12 +3,16 @@
    cinematic hero visual with NO outer white card, padding, or container clipping.
    A bottom vertical gradient fade progressively creeps upward on scroll,
    leaving the top storefront architecture clearly visible while seamlessly
-   dissolving into the page ground to reveal Trey's editorial testimonial. */
+   dissolving into the page ground to reveal Trey's editorial testimonial.
+
+   The ground is the page's own cream, not a colour of its own: the picture
+   has to dissolve into something, and any other value draws a line where the
+   section meets the ones above and below it. */
 
 .proof {
   position: relative;
   width: 100%;
-  background: var(--lav);
+  background: var(--cream);
   min-height: 240vh;
   margin: 0;
   padding: 0;
@@ -56,10 +60,10 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom,
-    rgba(243, 238, 251, 0) 0%,
-    rgba(243, 238, 251, 0) var(--grad-solid, 80%),
-    rgba(243, 238, 251, 0.7) var(--grad-mid, 94%),
-    var(--lav) var(--grad-end, 100%)
+    rgba(250, 247, 241, 0) 0%,
+    rgba(250, 247, 241, 0) var(--grad-solid, 80%),
+    rgba(250, 247, 241, 0.7) var(--grad-mid, 94%),
+    var(--cream) var(--grad-end, 100%)
   );
   pointer-events: none;
 }
