@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node scripts/shot-managed.mjs managed-2.png)",
+      "Bash(node scripts/probe-bg.mjs)",
+      "Bash(node scripts/shot-managed.mjs managed-3.png)"
+    ]
+  }
+}

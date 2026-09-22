@@ -1,0 +1,97 @@
+/* --- 3 · Proof --------------------------------------------------------------
+   One customer story, after Nory's "Success stories" card: a label, the
+   quote large, who said it, and the numbers anchored to the bottom, with
+   the storefront filling the right of the same card. Numbers and their
+   labels share rows across the three stats (subgrid), so they line up. */
+
+.proof { background: var(--lav); padding-block: 88px; }
+.proof__in { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--pad); }
+
+.story {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  border-radius: 32px;
+  background: #FFFFFF;
+  overflow: clip;
+  box-shadow: 0 1px 2px rgba(62, 40, 122, .06), 0 30px 60px -40px rgba(62, 40, 122, .35);
+}
+
+.story__body { display: flex; flex-direction: column; padding: 48px 52px 44px; }
+
+.story__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  height: 32px;
+  margin: 0;
+  padding: 0 14px 0 12px;
+  border-radius: 999px;
+  background: var(--lav);
+  color: #1E1E1E;
+  font: 500 14px/1 var(--f-text);
+}
+.story__tag span { width: 7px; height: 7px; border-radius: 50%; background: #9F7CEF; }
+
+.story__quote { margin: 36px 0 56px; }
+.story__quote p {
+  margin: 0;
+  color: #1E1E1E;
+  font: 500 clamp(22px, 2cqw, 27px)/1.26 var(--f-display);
+  letter-spacing: -.01em;
+  text-wrap: pretty;
+}
+.story__quote footer { margin-top: 26px; color: #1E1E1E; font: 500 16px/1.4 var(--f-text); }
+
+.story__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+  column-gap: 28px;
+  margin: auto 0 0;
+  padding: 28px 0 0;
+  border-top: 1px solid #ECE7F3;
+  list-style: none;
+}
+.story__stats li { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 10px; }
+.story__stats b { order: -1; color: #1E1E1E; font: 500 clamp(40px, 4cqw, 54px)/1 var(--f-display); letter-spacing: -.03em; }
+.story__stats span { color: #625E6A; font: 400 14.5px/1.4 var(--f-text); }
+
+.story__photo { position: relative; margin: 0; min-height: 100%; }
+.story__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.story__photo::after {
+  content: '';
+  position: absolute;
+  inset: 55% 0 0;
+  background: linear-gradient(to top, rgba(12, 8, 16, .62), rgba(12, 8, 16, 0));
+  pointer-events: none;
+}
+.story__photo figcaption {
+  position: absolute;
+  left: 32px;
+  bottom: 28px;
+  z-index: 1;
+  color: #FFFFFF;
+  font: 500 17px/1.3 var(--f-text);
+}
+
+@container site (max-width: 1023.98px) {
+  .proof { padding-block: 64px; }
+  .story { grid-template-columns: minmax(0, 1fr); border-radius: 24px; }
+  .story__photo { order: -1; aspect-ratio: 4 / 3; min-height: 0; }
+  .story__body { padding: 36px 36px 32px; }
+}
+
+@container site (max-width: 767.98px) {
+  .proof { padding-block: 48px; }
+  .story { border-radius: 20px; }
+  .story__photo figcaption { left: 20px; bottom: 16px; font-size: 15px; }
+  .story__body { padding: 28px 22px 26px; }
+  .story__quote { margin: 26px 0 40px; }
+  .story__quote p { font-size: 19px; }
+  .story__quote footer { margin-top: 20px; font-size: 15px; }
+  .story__stats { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; row-gap: 14px; padding-top: 22px; }
+  .story__stats li { grid-row: auto; grid-template-rows: none; grid-template-columns: 96px minmax(0, 1fr); align-items: center; column-gap: 14px; }
+  .story__stats span { font-size: 14px; }
+  .story__stats b { font-size: 34px; }
+}

@@ -1,0 +1,23 @@
+/* Brand faces, self-hosted. Regenerate with `node scripts/fetch-fonts.mjs`.
+   Both are variable fonts: one file each, declared over a weight range.
+   The families the stylesheets ask for are set in nav-hero.css, so
+   changing the typeface means changing them there and here. */
+
+/* Fraunces · display — an optical-size axis, so it stays sturdy at 88px and readable small */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/fraunces.woff2') format('woff2');
+}
+
+/* Inter · text and UI */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter.woff2') format('woff2');
+}
+

@@ -1,0 +1,8 @@
+/* The document shell the standalone pages stand on. The original pages were
+   fragments, and each was wrapped in exactly these rules to be viewed on its
+   own (the old *-preview.html files); the page stylesheets override them. */
+
+:root { color-scheme: light; }
+body { margin: 0; font: 14px system-ui, sans-serif; background: #faf9f7; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }

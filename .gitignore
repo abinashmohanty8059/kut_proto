@@ -1,0 +1,5 @@
+node_modules/
+build/
+.staging/
+*.local
+.DS_Store

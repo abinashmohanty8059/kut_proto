@@ -1,0 +1,278 @@
+/* ==========================================================================
+   Kutlerri redesign · Section 3 · Inbound, as a living diagram
+   --------------------------------------------------------------------------
+   Three branches (customer -> agent -> phone) stay on screen the whole time,
+   wired to the phone by connectors that follow their ports. One branch is
+   expanded at a time; the others stay compact and legible. The section sits
+   on the page's own background (--cream) with white cards, so there is no
+   dark stage and no glow.
+
+   Type: the display face for headings, the text face for body
+   and interface text. Shapes follow the rest of the page: cards 20-24px,
+   nested surfaces 12-16px, controls 8.6px, status pills.
+   ========================================================================== */
+
+.ib {
+  --ink: #19171D;
+  --ink-2: #565064;
+  --ink-3: #8B8598;
+  --line: #E8E4EE;
+  --wire: #D5CFE0;
+  --nest: #F5F3F8;
+  --accent: #9F7CEF;
+  --accent-ink: #5B37C4;
+  --soft: #EFE8FD;
+  --tint: #F8F5FE;
+  --f-ui: 'Inter', -apple-system, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+
+  /* The diagram's geometry, read by inbound.js. */
+  --flow-h: 639.8px;
+  --h-exp: 388.7px;
+  --node-w: 55px;
+  --col-gap: 37.8px;
+
+  background: var(--cream, #FAF7F1);
+  padding-block: 82.6px 89.4px;
+  font-family: var(--f-ui);
+}
+
+.ib__in { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--pad); }
+.ib__head { max-width: 40em; }
+.ib__eyebrow { margin: 0; color: var(--accent-ink); font: 500 11.2px/1 var(--f-ui); letter-spacing: .2em; text-transform: uppercase; }
+.ib__head h2 { margin: 15.5px 0 0; color: #1E1E1E; font: 500 clamp(27.5px, 4.2cqw, 43px)/1.07 var(--f-display); letter-spacing: -.018em; }
+.ib__lede { max-width: 36em; margin: 13.8px 0 0; color: var(--ink-2); font: 400 16.3px/1.55 var(--f-ui); }
+
+/* --- The stage: one card at a time on the left, the phone on the right ----- */
+
+.ib__stage { position: relative; margin-top: 44.7px; display: grid; grid-template-columns: minmax(0, 1fr) 337.1px; gap: 67.1px; align-items: center; }
+
+.ib__flow { position: relative; height: var(--flow-h); z-index: 2; }
+.ib__right { position: relative; display: grid; place-items: center; z-index: 3; }
+
+/* --- A branch -------------------------------------------------------------- */
+
+.ib-branch {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: grid;
+  grid-template-columns: var(--node-w) minmax(0, 1fr);
+  column-gap: var(--col-gap);
+  align-items: start;
+}
+/* Only one channel is out at a time, and each is thrown from the phone, so
+   the card carries the flight and scales about its own middle. */
+.ib-card { transform-origin: 50% 50%; will-change: transform, opacity; }
+.ib-node { will-change: opacity; }
+.ib-node { display: grid; align-content: start; justify-items: center; gap: 6px; padding-top: 3.4px; }   /* the label stays under the face, whatever the card's height */
+.ib-node__face { width: 44.7px; height: 44.7px; border-radius: 50%; overflow: hidden; background: #E9E5F0; box-shadow: 0 0 0 3px #FFFFFF, 0 3px 8.6px -4px rgba(25, 23, 29, .35); }
+.ib-node__face img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ib-node b { color: var(--ink-2); font: 500 9.9px/1.2 var(--f-ui); letter-spacing: .04em; text-align: center; }
+
+.ib-card {
+  position: relative;
+  border-radius: 18.9px;
+  background: #FFFFFF;
+  box-shadow: inset 0 0 0 1px var(--line), 0 1px 2px rgba(25, 23, 29, .04), 0 15.5px 29.2px -26px rgba(25, 23, 29, .4);
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow .3s ease;
+}
+.ib-card:hover { box-shadow: inset 0 0 0 1px #CFC6E2, 0 1px 2px rgba(25, 23, 29, .04), 0 15.5px 29.2px -26px rgba(25, 23, 29, .4); }
+.ib-branch.is-live .ib-card { box-shadow: inset 0 0 0 1.5px rgba(159, 124, 239, .55), 0 2px 5.2px rgba(91, 55, 196, .06), 0 22.4px 39.6px -28px rgba(91, 55, 196, .45); }
+
+.ib-card__head { display: flex; align-items: center; gap: 10.3px; height: 53.3px; padding: 0 15.5px; }
+.ib-mark { display: grid; place-items: center; width: 25.8px; height: 25.8px; border-radius: 7.7px; background: var(--tint); flex: none; }
+.ib-mark img { display: block; width: 15.5px; height: auto; }
+.ib-ico { display: grid; place-items: center; width: 25.8px; height: 25.8px; border-radius: 7.7px; background: var(--nest); color: var(--ink-2); flex: none; }
+.ib-ico svg { width: 13.8px; height: 13.8px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.ib-ico--on { background: var(--accent); color: #FFFFFF; }
+.ib-ico--soft { background: var(--soft); color: var(--accent-ink); }
+.ib-card__head b { color: var(--ink); font: 500 12.9px/1.2 var(--f-display); letter-spacing: -.005em; white-space: nowrap; }
+.ib-card__long { font-style: normal; }
+.ib-card__state { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; height: 22.4px; padding: 0 10.3px; border-radius: 999px; background: var(--nest); color: var(--ink-2); font: 500 10.3px/1 var(--f-ui); white-space: nowrap; }
+.ib-card__state i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .55; }
+.ib-card__state.is-live { background: var(--soft); color: var(--accent-ink); }
+.ib-card__state.is-live i { background: var(--accent); opacity: 1; }
+.ib-card__state.is-done { background: var(--soft); color: var(--accent-ink); }
+
+/* The compact summary a finished branch keeps. */
+.ib-sum { display: flex; flex-wrap: wrap; gap: 6.9px; padding: 0 15.5px 13.8px; opacity: 0; }
+.ib-sum span { display: inline-flex; align-items: center; height: 24.1px; padding: 0 10.3px; border-radius: 999px; background: var(--nest); color: var(--ink); font: 500 10.8px/1 var(--f-ui); }
+.ib-sum span.is-ok { background: var(--soft); color: var(--accent-ink); }
+
+/* The interaction, only visible while the branch is expanded. */
+.ib-body { position: absolute; left: 0; right: 0; top: 53.3px; bottom: 0; padding: 0 15.5px 15.5px; opacity: 0; }
+.ib-card__hint { position: absolute; left: 15.5px; right: 15.5px; top: 53.3px; margin: 0; color: var(--ink-3); font: 400 11.6px/1.45 var(--f-ui); }
+
+/* --- Conversation pieces (shared by all three branches) -------------------- */
+
+.ib-thread { position: relative; overflow: hidden; }
+.ib-thread::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 18.9px; background: linear-gradient(180deg, #FFFFFF, rgba(255, 255, 255, 0)); pointer-events: none; z-index: 2; }
+.ib-thread__in { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; gap: 7.7px; align-items: flex-start; will-change: transform; }
+.ib-bub { max-width: 82%; padding: 8.6px 12px; border-radius: 12.9px; font: 400 12.5px/1.42 var(--f-ui); color: var(--ink); opacity: 0; }
+.ib-bub--in { background: var(--nest); border-bottom-left-radius: 4.3px; }
+.ib-bub--ai { align-self: flex-end; background: var(--soft); border-bottom-right-radius: 4.3px; }
+
+/* --- The conversation, identical in all three branches --------------------
+   A status bar, a full-width transcript and the order summary. The transcript
+   scrolls in whole messages: the bottom edge only ever rests on a message
+   boundary, so nothing is ever cut in half. */
+
+.ib-conv { display: flex; flex-direction: column; gap: 10.3px; height: 100%; }
+.ib-conv__bar { display: flex; align-items: center; gap: 12px; height: 34.4px; padding: 0 12px; border-radius: 11.2px; background: var(--nest); flex: none; }
+.ib-live { display: inline-flex; align-items: center; gap: 6px; color: var(--accent-ink); font: 500 10.8px/1 var(--f-ui); white-space: nowrap; }
+.ib-live i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.ib-conv__bar em { margin-left: auto; font-style: normal; color: var(--ink-3); font: 400 10.3px/1 var(--f-ui); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* The live waveform sits in the bar, at the width it actually has. */
+.ib-wave { flex: 1; display: flex; align-items: center; justify-content: center; gap: 3px; height: 18.9px; min-width: 0; overflow: hidden; }
+.ib-wave i { width: 3px; height: 18.1px; border-radius: 2px; background: var(--accent); opacity: .3; transform: scaleY(.2); will-change: transform; }
+
+.ib-thread { flex: 1; min-height: 0; }
+.ib-tag { display: block; margin-bottom: 4.3px; color: var(--ink-3); font: 500 8.6px/1 var(--f-ui); font-style: normal; letter-spacing: .1em; text-transform: uppercase; }
+.ib-bub--ai .ib-tag { color: var(--accent-ink); }
+
+/* --- The phone: the app's Today screen -------------------------------------
+   Rebuilt from the APP BRANDING Figma frame `today` (1:74, 402 wide). Every
+   size below is that frame's own pixel value times --u, so the screen keeps
+   the design's proportions at whatever width the phone happens to be.
+   --------------------------------------------------------------------------- */
+
+.ib__phone { position: relative; width: 322px; height: 670px; }
+.ib .phone__screen { display: block; container-type: inline-size; background: #FFFFFF; }
+.ib .phone__screen::after { display: none; }
+
+.ib-today {
+  --u: calc(100cqw / 402);
+  --tdy-ink: #101014;
+  --tdy-2: #6B6676;
+  --tdy-3: #9A94A6;
+  --tdy-line: #ECE9F2;
+  position: absolute;
+  inset: 0;
+  background: #FFFFFF;
+  overflow: hidden;
+  font-family: var(--f-ui);
+}
+
+/* Status bar */
+.tdy__status { display: flex; align-items: center; justify-content: space-between; height: calc(46 * var(--u)); padding: calc(8 * var(--u)) calc(25 * var(--u)) 0; }
+.tdy__status b { color: var(--tdy-ink); font: 600 calc(13 * var(--u))/1 var(--f-ui); letter-spacing: .01em; }
+.tdy__sys { display: flex; align-items: center; gap: calc(5 * var(--u)); }
+.tdy__sys svg { display: block; height: calc(11 * var(--u)); width: auto; fill: var(--tdy-ink); }
+
+/* Greeting */
+.tdy__greet { display: flex; align-items: flex-start; justify-content: space-between; margin: calc(15 * var(--u)) calc(23 * var(--u)) 0 calc(21 * var(--u)); }
+.tdy__greet b { display: block; color: var(--tdy-ink); font: 500 calc(25 * var(--u))/1.08 var(--f-ui); letter-spacing: -.02em; }
+.tdy__greet p { margin: calc(7 * var(--u)) 0 0; color: var(--tdy-3); font: 400 calc(11.5 * var(--u))/1 var(--f-ui); }
+.tdy__me { display: grid; place-items: center; width: calc(38 * var(--u)); height: calc(38 * var(--u)); border-radius: 50%; background: #FFFFFF; box-shadow: 0 calc(2 * var(--u)) calc(8 * var(--u)) rgba(20, 19, 24, .12), 0 0 0 1px rgba(20, 19, 24, .05); flex: none; }
+.tdy__me svg { width: calc(17 * var(--u)); height: calc(17 * var(--u)); fill: none; stroke: var(--tdy-ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* The two counters */
+.tdy__stats { display: flex; align-items: center; margin: calc(11 * var(--u)) calc(21 * var(--u)) 0; padding: calc(15 * var(--u)) calc(4 * var(--u)); border-radius: calc(18 * var(--u)); background: #F6F3FD; }
+.tdy__stat { display: flex; align-items: center; gap: calc(11 * var(--u)); flex: 1; padding-inline: calc(16 * var(--u)); }
+.tdy__stats > i { width: 1px; align-self: stretch; margin-block: calc(3 * var(--u)); background: #E2DBF3; }
+.tdy__stat > b { color: var(--tdy-ink); font: 500 calc(27 * var(--u))/1 var(--f-ui); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.tdy__stat em { font-style: normal; color: var(--tdy-ink); font: 600 calc(12 * var(--u))/1.25 var(--f-ui); }
+.tdy__stat s { display: block; margin-top: calc(2 * var(--u)); color: var(--tdy-3); font: 400 calc(10 * var(--u))/1.2 var(--f-ui); text-decoration: none; }
+.tdy__stat--need > b { color: var(--accent); }
+/* the counter only ever rolls upward */
+.tdy__roll { position: relative; display: block; width: calc(19 * var(--u)); height: calc(29 * var(--u)); overflow: hidden; flex: none; }
+.tdy__roll u { position: absolute; left: 0; top: 0; color: var(--accent); font: 500 calc(27 * var(--u))/calc(29 * var(--u)) var(--f-ui); letter-spacing: -.03em; text-decoration: none; }
+
+/* Section labels */
+.tdy__seclabel { display: flex; align-items: baseline; justify-content: space-between; margin: calc(18 * var(--u)) calc(22 * var(--u)) calc(9 * var(--u)); }
+.tdy__seclabel--tight { margin-top: calc(15 * var(--u)); }
+.tdy__seclabel p { margin: 0; color: var(--tdy-2); font: 400 calc(10 * var(--u))/1 var(--f-ui); letter-spacing: .13em; text-transform: uppercase; }
+.tdy__seclabel em { font-style: normal; color: var(--tdy-3); font: 400 calc(10.5 * var(--u))/1 var(--f-ui); }
+
+/* The stream of requests waiting for the restaurant */
+.tdy__list { position: relative; height: calc(368 * var(--u)); margin: 0 calc(16 * var(--u)); overflow: hidden; }
+.tdy__empty { position: absolute; left: 0; right: 0; top: 0; margin: 0; padding: calc(22 * var(--u)) calc(26 * var(--u)); border-radius: calc(14 * var(--u)); background: #FAF9FC; box-shadow: inset 0 0 0 1px var(--tdy-line); color: var(--tdy-3); font: 400 calc(11 * var(--u))/1.45 var(--f-ui); text-align: center; }
+.tdy__card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: calc(176 * var(--u));
+  padding: calc(13 * var(--u)) calc(15 * var(--u)) calc(14 * var(--u));
+  border-radius: calc(14 * var(--u));
+  background: #FFFFFF;
+  box-shadow: inset 0 0 0 1px var(--tdy-line), inset calc(3 * var(--u)) 0 0 var(--accent), 0 calc(6 * var(--u)) calc(16 * var(--u)) calc(-12 * var(--u)) rgba(25, 23, 29, .22);
+  opacity: 0;
+  will-change: transform;
+}
+.tdy__crow { display: flex; align-items: center; justify-content: space-between; gap: calc(10 * var(--u)); }
+.tdy__tag { display: inline-flex; align-items: center; height: calc(17 * var(--u)); padding: 0 calc(9 * var(--u)); border-radius: 999px; background: var(--soft); color: var(--accent-ink); font: 600 calc(9 * var(--u))/1 var(--f-ui); letter-spacing: .09em; text-transform: uppercase; }
+.tdy__crow b { color: var(--tdy-ink); font: 700 calc(13.5 * var(--u))/1 var(--f-ui); font-variant-numeric: tabular-nums; }
+.tdy__card h4 { margin: calc(11 * var(--u)) 0 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--tdy-ink); font: 500 calc(13.5 * var(--u))/1.25 var(--f-ui); letter-spacing: -.01em; }
+.tdy__note { display: flex; gap: calc(10 * var(--u)); margin-top: calc(10 * var(--u)); padding: calc(10 * var(--u)); border-radius: calc(10 * var(--u)); background: #F6F3FD; }
+.tdy__spark { display: grid; place-items: center; width: calc(17 * var(--u)); height: calc(17 * var(--u)); border-radius: calc(5 * var(--u)); background: var(--accent); flex: none; }
+.tdy__spark svg { width: calc(9 * var(--u)); height: calc(9 * var(--u)); fill: #FFFFFF; stroke: none; }
+.tdy__note { height: calc(50 * var(--u)); align-items: flex-start; }
+.tdy__note p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; margin: 0; color: var(--tdy-2); font: 400 calc(10.5 * var(--u))/1.42 var(--f-ui); }
+.tdy__btns { display: flex; gap: calc(5 * var(--u)); margin-top: auto; }
+.tdy__card { display: flex; flex-direction: column; }
+.tdy__rev, .tdy__app { display: grid; place-items: center; flex: 1; height: calc(32.5 * var(--u)); border-radius: calc(9 * var(--u)); font: 600 calc(11.5 * var(--u))/1 var(--f-ui); }
+.tdy__rev { background: #FFFFFF; box-shadow: inset 0 0 0 1px var(--tdy-line); color: var(--tdy-ink); }
+.tdy__app { background: #17161A; color: #FFFFFF; }
+
+/* Prioritized calls */
+.tdy__calls { display: grid; grid-template-columns: 1fr 1fr; gap: calc(8 * var(--u)); margin: 0 calc(18 * var(--u)); }
+.tdy__calls span { position: relative; padding: calc(12 * var(--u)) calc(13 * var(--u)); border-radius: calc(12 * var(--u)); background: #FFFFFF; box-shadow: inset 0 0 0 1px var(--tdy-line); }
+.tdy__calls b { display: block; max-width: calc(78 * var(--u)); color: var(--tdy-ink); font: 700 calc(12 * var(--u))/1.2 var(--f-ui); }
+.tdy__calls em { display: block; margin-top: calc(6 * var(--u)); font-style: normal; color: var(--tdy-3); font: 400 calc(9.5 * var(--u))/1 var(--f-ui); }
+.tdy__calls u { position: absolute; right: calc(13 * var(--u)); top: calc(12 * var(--u)); color: var(--accent); font: 500 calc(22 * var(--u))/1 var(--f-ui); text-decoration: none; }
+
+/* Agent activity */
+.tdy__act { margin: 0 calc(16 * var(--u)); border-radius: calc(14 * var(--u)); background: #FFFFFF; box-shadow: inset 0 0 0 1px var(--tdy-line); overflow: hidden; }
+.tdy__acthead { display: flex; align-items: center; justify-content: space-between; padding: calc(14 * var(--u)) calc(15 * var(--u)); box-shadow: inset 0 -1px 0 var(--tdy-line); }
+.tdy__acthead b { color: var(--tdy-ink); font: 500 calc(11.5 * var(--u))/1 var(--f-ui); letter-spacing: .1em; text-transform: uppercase; }
+.tdy__acthead span { display: inline-flex; align-items: center; gap: calc(9 * var(--u)); }
+.tdy__acthead u { display: grid; place-items: center; width: calc(17 * var(--u)); height: calc(17 * var(--u)); border-radius: 50%; background: var(--soft); color: var(--accent-ink); font: 600 calc(9.5 * var(--u))/1 var(--f-ui); text-decoration: none; }
+.tdy__acthead svg { width: calc(11 * var(--u)); height: calc(11 * var(--u)); fill: none; stroke: var(--tdy-2); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.tdy__actrow { display: grid; grid-template-columns: calc(26 * var(--u)) minmax(0, 1fr) auto; align-items: start; gap: calc(11 * var(--u)); padding: calc(12 * var(--u)) calc(15 * var(--u)); }
+.tdy__actrow + .tdy__actrow { box-shadow: inset 0 1px 0 var(--tdy-line); }
+.tdy__actico { display: grid; place-items: center; width: calc(26 * var(--u)); height: calc(26 * var(--u)); border-radius: 50%; background: var(--soft); }
+.tdy__actico svg { width: calc(12 * var(--u)); height: calc(12 * var(--u)); fill: none; stroke: var(--accent-ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.tdy__actrow b { display: block; color: var(--tdy-ink); font: 700 calc(11.5 * var(--u))/1.2 var(--f-ui); }
+.tdy__actrow em { display: block; margin-top: calc(4 * var(--u)); font-style: normal; color: var(--tdy-3); font: 400 calc(10 * var(--u))/1.35 var(--f-ui); }
+.tdy__actrow i { font-style: normal; color: var(--tdy-3); font: 400 calc(9.5 * var(--u))/1.2 var(--f-ui); white-space: nowrap; }
+
+/* --- Stacked: the card flies up out of the phone instead of sideways ------- */
+
+@container site (max-width: 1023.98px) {
+  .ib { --flow-h: 626.1px; --h-exp: 388.7px; }
+  .ib__stage { grid-template-columns: minmax(0, 1fr); gap: 25.8px; align-items: stretch; }
+  .ib__right { padding-top: 5.2px; }
+  .ib__phone { width: 275.2px; height: 572.8px; }
+}
+
+@container site (max-width: 660.5px) {
+  .ib { padding-block: 51.6px 58.5px; --flow-h: 674.2px; --h-exp: 383.6px; --node-w: 41.3px; --col-gap: 18.9px; }
+  .ib__head h2 { font-size: clamp(24.1px, 8.4cqw, 31px); }
+  .ib__lede { font-size: 14.6px; }
+  .ib-node__face { width: 36.1px; height: 36.1px; }
+  .ib-node b { font-size: 8.6px; }
+  .ib-card__head { height: 48.2px; padding: 0 10.3px; gap: 7.7px; }
+  .ib-card__head b { font-size: 12px; }
+  .ib-card__state { height: 20.6px; padding: 0 7.7px; font-size: 9.5px; }
+  .ib-body { top: 48.2px; padding: 0 10.3px 10.3px; }
+  .ib-card__hint { left: 10.3px; right: 10.3px; top: 48.2px; font-size: 10.8px; }
+  .ib-sum { padding: 0 10.3px 10.3px; gap: 5.2px; }
+  .ib-sum span { height: 22.4px; padding: 0 8.6px; font-size: 9.9px; }
+  .ib-conv { gap: 8.6px; }
+  .ib-conv__bar { height: 31px; padding: 0 9.5px; gap: 8.6px; }
+  .ib-conv__bar em { font-size: 9.5px; }
+  .ib-bub { font-size: 11.6px; max-width: 88%; }
+  .ib-card__long { display: none; }      /* 'Call', not 'Call agent': the row has to stay on one line */
+  .ib-card__head [data-chico] { display: none; }   /* the mark and the name are identification enough */
+  .ib-card__head b { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .ib__phone { width: 249.4px; height: 519.4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ib-card { transition: none; }
+}

@@ -1,0 +1,173 @@
+/* --- 9 · Encore: the RASA story as the closing page -------------------------
+   The same frame and the same words as section 3, transitioned the other way
+   round. Section 3 dissolves the picture from the bottom up and lets the
+   quote fade in under it; here the picture starts full bleed and *retracts*
+   into a rounded plate, giving the ground up from the bottom, while the quote
+   lands one word at a time out of a blur and the attribution slides in.
+
+   Everything animated is an inset, a transform or an opacity, driven from one
+   scroll clock in proof-encore.ts through the custom properties below. */
+
+.encore {
+  position: relative;
+  width: 100%;
+  background: var(--lav);
+  min-height: 260vh;
+  margin: 0;
+  padding: 0;
+
+  /* The scroll clock writes these. The values here are frame one: full bleed. */
+  --plate-t: 0px;
+  --plate-x: 0px;
+  --plate-b: 0px;
+  --plate-r: 0px;
+  --plate-lift: 0;
+  --img-scale: 1.14;
+  --veil: .34;
+}
+
+.encore__sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* The plate. Its inset is the whole transition: 0 on every side at the start,
+   an inset frame with rounded corners and a cast shadow by the end. */
+.encore__plate {
+  position: absolute;
+  top: var(--plate-t);
+  right: var(--plate-x);
+  bottom: var(--plate-b);
+  left: var(--plate-x);
+  overflow: hidden;
+  border-radius: var(--plate-r);
+  box-shadow: 0 40px 90px -50px rgba(38, 24, 76, calc(.55 * var(--plate-lift)));
+  will-change: top, bottom, left, right, border-radius;
+}
+
+/* The picture counter-zooms as the plate closes in, so the storefront keeps
+   its size in the frame instead of being cropped away. */
+.encore__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  display: block;
+  transform: scale(var(--img-scale));
+  transform-origin: center 30%;
+  will-change: transform;
+}
+
+/* A lavender veil over the picture: strongest at the start, so the page reads
+   as one plane, lifting as the plate settles into its frame. */
+.encore__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(243, 238, 251, .22) 0%, rgba(243, 238, 251, 0) 42%, rgba(38, 24, 76, .18) 100%);
+  opacity: var(--veil);
+  pointer-events: none;
+}
+
+/* The words sit in the ground the plate gives up, at the bottom of the frame. */
+.encore__body {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  width: 100%;
+  max-width: 980px;
+  margin-inline: auto;
+  padding: 0 clamp(24px, 5vw, 64px) clamp(44px, 8vh, 80px);
+  box-sizing: border-box;
+}
+
+.encore__quote { margin: 0; padding: 0; }
+
+.encore__words {
+  margin: 0;
+  color: #1E1E1E;
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: clamp(23px, 2.7cqw, 37px);
+  line-height: 1.34;
+  letter-spacing: -.015em;
+  text-wrap: pretty;
+}
+
+/* One span per word, written by proof-encore.ts. Each carries its own clock
+   value (--w: 0 to 1), so the line arrives as speech does rather than all at
+   once. The wrapper keeps the word unbreakable and the space after it real. */
+.encore__w {
+  display: inline-block;
+  opacity: calc(.06 + .94 * var(--w, 1));
+  transform: translate3d(0, calc((1 - var(--w, 1)) * 14px), 0);
+  filter: blur(calc((1 - var(--w, 1)) * 5px));
+  will-change: opacity, transform, filter;
+}
+
+.encore__attribution {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: clamp(24px, 3.5vh, 36px);
+  opacity: var(--sig, 0);
+  transform: translate3d(calc((1 - var(--sig, 0)) * -22px), 0, 0);
+  will-change: opacity, transform;
+}
+
+.encore__avatar {
+  position: relative;
+  width: clamp(58px, 5.8vw, 72px);
+  height: clamp(58px, 5.8vw, 72px);
+  border-radius: 50%;
+  background: #ECE6F6;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(62, 40, 122, .12);
+}
+.encore__avatar-img { width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 50%; display: block; }
+.encore__avatar-fallback {
+  display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;
+  color: #7C5AC9; font: 600 15px/1 var(--f-text); user-select: none;
+}
+
+.encore__by { display: flex; flex-direction: column; gap: 2px; }
+.encore__name {
+  font: 600 clamp(15.5px, 1.4cqw, 17.5px)/1.3 var(--f-text);
+  font-style: normal; color: #1E1E1E; letter-spacing: -.005em;
+}
+.encore__role { font: 400 13.5px/1.3 var(--f-text); font-style: normal; color: #625E6A; }
+
+@container site (max-width: 1023.98px) {
+  .encore__words { font-size: 26px; }
+  .encore__body { padding: 0 36px clamp(40px, 6vh, 60px); }
+}
+
+@container site (max-width: 767.98px) {
+  .encore { min-height: 220vh; }
+  .encore__body { padding: 0 24px 36px; }
+  .encore__words { font-size: 19px; line-height: 1.38; }
+  .encore__attribution { margin-top: 20px; gap: 14px; }
+  .encore__avatar { width: 52px; height: 52px; }
+  .encore__name { font-size: 15px; }
+  .encore__role { font-size: 12.5px; }
+}
+
+/* Nothing to scrub through: the plate is already framed and the words are
+   already there. */
+@media (prefers-reduced-motion: reduce) {
+  .encore { min-height: 0 !important; --img-scale: 1; --veil: .12; --plate-lift: 1; }
+  .encore__sticky { position: static !important; height: auto !important; min-height: 100svh; }
+  .encore__w { opacity: 1 !important; transform: none !important; filter: none !important; }
+  .encore__attribution { opacity: 1 !important; transform: none !important; }
+}

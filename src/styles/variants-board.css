@@ -1,0 +1,146 @@
+/* ==========================================================================
+   Kutlerri redesign · "How it works", three designs side by side
+   --------------------------------------------------------------------------
+   A  the pinned list (what the page ships today, with the dot fixed)
+   B  a deck: each capability is a card that rises and stacks on the last
+   C  a player: tabs that advance themselves, one loop each, no scrolljacking
+   Board chrome is prefixed .vb; the designs are .cap (A), .dk (B), .tb (C).
+   ========================================================================== */
+
+.vb { background: #EFEAF6; color: #19171D; font-family: var(--f-text); }
+.vb__head { max-width: 1120px; margin-inline: auto; padding: 56px 32px 28px; }
+.vb__label { margin: 0; color: #7B57D9; font: 500 13px/1 var(--f-text); letter-spacing: .2em; text-transform: uppercase; }
+.vb__head h1 { margin: 16px 0 0; font: 500 clamp(30px, 3.4vw, 46px)/1.08 var(--f-display); letter-spacing: -.02em; }
+.vb__head p { max-width: 62ch; margin: 14px 0 0; color: #4B4653; font: 400 18px/1.55 var(--f-text); }
+.vb__jump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.vb__jump a {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  box-shadow: inset 0 0 0 1px rgba(25, 23, 29, .1);
+  color: #19171D;
+  font: 500 15px/1 var(--f-text);
+  text-decoration: none;
+}
+.vb__jump a:hover { box-shadow: inset 0 0 0 1px #9F7CEF; }
+
+.vb__case { padding: 28px 0 56px; }
+.vb__bar { max-width: 1120px; margin: 0 auto 14px; padding: 0 32px; display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.vb__bar b { font: 500 22px/1.2 var(--f-display); letter-spacing: -.01em; }
+.vb__bar span { color: #4B4653; font: 400 16px/1.5 var(--f-text); }
+.vb__frame { background: #FFFFFF; box-shadow: 0 30px 60px -40px rgba(25, 23, 29, .45); }
+
+/* --- B · the deck ----------------------------------------------------------
+   One sticky stage; each capability is a card that rises from below and
+   settles on the stack, so the earlier ones stay visible as edges behind. */
+
+.dk { --card-h: min(560px, calc(100svh - 190px)); background: #FAF7F1; }
+.dk__head, .tb__head { max-width: var(--wrap); margin-inline: auto; padding: 88px var(--pad) 0; text-align: center; }
+.dk__head h2, .tb__head h2 {
+  max-width: 15em;
+  margin: 18px auto 0;
+  color: #1E1E1E;
+  font: 500 clamp(32px, 4.2cqw, 52px)/1.06 var(--f-display);
+  letter-spacing: -.018em;
+  text-wrap: balance;
+}
+.dk__track { --step: 62svh; position: relative; height: calc(100svh + 5 * var(--step)); }
+.dk__sticky { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; overflow: hidden; }
+/* The clip gives the stack room above the front card and hides the next
+   card until it rises past the front card's bottom edge. */
+.dk__clip { position: relative; width: min(1040px, calc(100cqw - 2 * var(--pad))); height: calc(var(--card-h) + 96px); overflow: hidden; display: flex; align-items: flex-end; }
+.dk__stage { position: relative; width: 100%; height: var(--card-h); }
+
+.dk__card {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: var(--card-h) minmax(0, 1fr);
+  border-radius: 32px;
+  background: #FFFFFF;
+  box-shadow: inset 0 0 0 1px rgba(25, 23, 29, .08), 0 40px 80px -44px rgba(19, 10, 27, .6);
+  overflow: hidden;
+  will-change: transform;
+}
+.dk__media { position: relative; background: var(--plum); overflow: hidden; }
+.dk__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.dk__body { display: flex; flex-direction: column; justify-content: center; padding: 48px 52px; }
+.dk__n { margin: 0; color: #9F7CEF; font: 500 15px/1 var(--f-text); letter-spacing: .18em; }
+.dk__card h3 { margin: 18px 0 0; font: 500 clamp(30px, 3.4cqw, 44px)/1.05 var(--f-display); letter-spacing: -.018em; color: #1E1E1E; }
+.dk__card p { max-width: 20em; margin: 18px 0 0; color: #45414D; font: 400 19px/1.55 var(--f-text); }
+.dk__rail { position: absolute; left: 50%; bottom: 40px; translate: -50% 0; display: flex; gap: 8px; }
+.dk__rail i { width: 34px; height: 4px; border-radius: 2px; background: #DED7EC; transition: background-color .3s ease; }
+.dk__rail i.is-on { background: #9F7CEF; }
+
+/* --- C · the player --------------------------------------------------------
+   No pinning and no scroll hijack: five tabs that hand over by themselves,
+   each one lasting exactly one loop. */
+
+.tb { background: #FFFFFF; }
+.tb__in { max-width: var(--wrap); margin-inline: auto; padding: 44px var(--pad) 96px; }
+.tb__nav { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.tb__tab {
+  position: relative;
+  padding: 0 0 16px;
+  border: 0;
+  background: none;
+  color: #8A8492;
+  font: 500 19px/1.3 var(--f-text);
+  text-align: left;
+  cursor: pointer;
+  transition: color .25s ease;
+}
+.tb__tab b { display: block; font: 500 13px/1 var(--f-text); letter-spacing: .18em; color: #B3ADBD; transition: color .25s ease; }
+.tb__tab span { display: block; margin-top: 10px; font: 500 21px/1.2 var(--f-display); letter-spacing: -.01em; }
+.tb__tab:hover { color: #56505F; }
+.tb__tab[aria-selected="true"] { color: #19171D; }
+.tb__tab[aria-selected="true"] b { color: #9F7CEF; }
+.tb__tab i { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; border-radius: 2px; background: #E7E2EF; overflow: hidden; }
+.tb__tab i::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  background: #9F7CEF;
+  transform: scaleX(var(--p, 0));
+  transform-origin: 0 50%;
+}
+.tb__body { display: grid; grid-template-columns: minmax(0, 420fr) minmax(0, 560fr); column-gap: clamp(32px, 5cqw, 72px); align-items: center; margin-top: 52px; }
+.tb__copy h3 { margin: 0; font: 500 clamp(34px, 4cqw, 50px)/1.04 var(--f-display); letter-spacing: -.02em; color: #1E1E1E; }
+.tb__copy p { max-width: 24em; margin: 20px 0 0; color: #45414D; font: 400 20px/1.55 var(--f-text); }
+.tb__copy .tb__swap { transition: opacity .28s ease, transform .28s ease; }
+.tb__copy.is-swapping .tb__swap { opacity: 0; transform: translateY(8px); }
+.tb__panel { position: relative; aspect-ratio: 1; border-radius: 36px; background: var(--plum); overflow: hidden; box-shadow: 0 34px 70px -36px rgba(19, 10, 27, .55); }
+.tb__panel video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .4s ease; }
+.tb__panel video.is-on { opacity: 1; }
+
+@container site (max-width: 1023.98px) {
+  .dk__track { --step: 58svh; }
+  .dk { --card-h: min(640px, calc(100svh - 150px)); }
+  .dk__card { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; }
+  .dk__media { aspect-ratio: 1; }
+  .dk__body { padding: 28px 30px 34px; }
+  .dk__card p { font-size: 17px; }
+  .tb__body { grid-template-columns: minmax(0, 1fr); row-gap: 28px; }
+  .tb__panel { order: -1; max-width: 560px; margin-inline: auto; width: 100%; }
+  .tb__copy p { font-size: 18px; }
+}
+
+@container site (max-width: 767.98px) {
+  .dk__head, .tb__head { padding-top: 56px; }
+  .dk { --card-h: min(560px, calc(100svh - 130px)); }
+  .dk__card h3 { font-size: 27px; }
+  .dk__card p { font-size: 16px; margin-top: 12px; }
+  .dk__body { padding: 22px 22px 26px; }
+  .tb__nav { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+  .tb__tab span { font-size: 15px; }
+  .tb__tab b { font-size: 11px; letter-spacing: .12em; }
+  .tb__in { padding-bottom: 64px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dk__card, .tb__panel video, .tb__copy .tb__swap { transition: none; }
+}

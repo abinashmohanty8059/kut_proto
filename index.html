@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kutlerri Home</title>
+<script>document.documentElement.classList.add('js');</script>
+<script type="module" src="/src/pages/index/main.ts"></script>
+</head>
+<body>
+
+  <div class="site home" data-hero-autoplay>
+
+    <header class="nav">
+      <div class="nav__in">
+        <a class="nav__brand" href="#top" aria-label="Kutlerri.ai home">
+          <img class="nav__logo" src="/images/logo-wordmark.png" alt="Kutlerri.ai" width="440" height="86">
+        </a>
+        <nav class="nav__links" aria-label="Primary">
+          <button class="nav__link" type="button" aria-expanded="false">Products
+            <svg class="nav__chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <a class="nav__link" href="#proof">Resources</a>
+          <button class="nav__link" type="button" aria-expanded="false">Company
+            <svg class="nav__chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </nav>
+        <a class="nav__cta" href="#demo">Get a demo</a>
+        <button class="nav__menu" type="button" aria-expanded="false" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8.5h16M4 15.5h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- 1 · Hero -->
+    <!-- Figma frames 1:199 (centred, before the reveal) and 1:74 (final). The
+         headline and paragraph wrap by width: 2 + 2 lines centred, 3 + 3 lines
+         on the left. hero.js builds the centred copy (data-reflow). -->
+    <section class="hero" id="top" data-reflow>
+      <div class="hero__in">
+        <div class="hero__copy">
+          <h1 class="hero__title">We bring the <em class="hero__accent">catering orders</em>. You manage the kitchen.</h1>
+          <p class="hero__lede">Kutlerri’s AI catering sales agent finds the businesses around your restaurant, does the outreaches, answers the inquiries &amp; closes the orders for you. We get paid only when you do.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--primary" href="#demo">Book a demo</a>
+            <a class="btn btn--secondary" href="#how-it-works">See how it works<svg class="btn__play" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#212121"/><path d="M8.5 13.64V7.87c0-.39.42-.63.75-.43l5 2.88c.33.2.33.68 0 .87l-5 2.88c-.33.2-.75-.04-.75-.43Z" fill="#D9D9D9"/></svg></a>
+          </div>
+        </div>
+
+        <div class="hero__visual">
+          <div class="hero__wash" aria-hidden="true"></div>
+          <div class="phone hero__phone" role="img" aria-label="The Kutlerri app's Today screen on a phone: 37 agent actions done, 2 quotes waiting for approval.">
+            <span class="phone__btn phone__btn--action"></span>
+            <span class="phone__btn phone__btn--up"></span>
+            <span class="phone__btn phone__btn--down"></span>
+            <span class="phone__btn phone__btn--power"></span>
+            <div class="phone__body"><div class="phone__bezel"><div class="phone__screen">
+              <!-- The Today screen, ported from Figma node 1:88 at app scale:
+                   SF Pro (the system face on Apple devices), sizes in --u. -->
+              <div class="td" aria-hidden="true">
+                <div class="td__status">
+                  <span class="td__time">9:41</span>
+                  <span class="td__sys">
+                    <svg class="td__signal" viewBox="0 0 13.3146 8.87356"><g clip-path="url(#td-c1)" fill="#0A0A0A"><path d="M.92 5.92h.92c.5 0 .91.41.91.91v1.84c0 .5-.41.91-.91.91H.92A.92.92 0 0 1 0 8.67V6.83c0-.5.41-.91.92-.91Z"/><path d="M4.62 4.07h.91c.51 0 .92.41.92.91v4.13c0 .5-.41.91-.92.91h-.91a.92.92 0 0 1-.92-.91V4.98c0-.5.41-.91.92-.91Z"/><path d="M8.31 2.22h.92c.5 0 .92.41.92.92v6.41c0 .51-.41.92-.92.92h-.92a.92.92 0 0 1-.91-.92V3.14c0-.51.41-.92.91-.92Z"/><path d="M12.01.37h.92c.5 0 .92.41.92.92v8.7c0 .51-.41.92-.92.92h-.92a.92.92 0 0 1-.91-.92v-8.7c0-.51.41-.92.91-.92Z"/></g><defs><clipPath id="td-c1"><rect width="13.3146" height="8.87356"/></clipPath></defs></svg>
+                    <svg class="td__wifi" viewBox="0 0 11.8286 8.87356"><g clip-path="url(#td-c2)" fill="none" stroke="#0A0A0A" stroke-width="1.109" stroke-linecap="round"><path d="M.74 3.54a9.83 9.83 0 0 1 12.83 0"/><path d="M2.51 5.3a5.8 5.8 0 0 1 8.43 0"/><path d="M4.29 6.97a2.75 2.75 0 0 1 4.03 0"/></g><defs><clipPath id="td-c2"><rect width="11.8286" height="8.87356"/></clipPath></defs></svg>
+                    <svg class="td__battery" viewBox="0 0 20.9739 9.68024"><g clip-path="url(#td-c3)" fill="#0A0A0A"><path d="M3.28.81h16.4a2.8 2.8 0 0 1 2.8 2.8v4.4a2.8 2.8 0 0 1-2.8 2.8H3.28a2.8 2.8 0 0 1-2.8-2.8v-4.4a2.8 2.8 0 0 1 2.8-2.8Z" fill="none" stroke="#0A0A0A" stroke-width=".968"/><path d="M3.24 2.26h12.4c.72 0 1.3.58 1.3 1.3v3.8c0 .72-.58 1.3-1.3 1.3H3.24c-.72 0-1.3-.58-1.3-1.3v-3.8c0-.72.58-1.3 1.3-1.3Z"/><path d="M20.16 3.23h.1c.44 0 .8.36.8.8v2.4c0 .44-.36.8-.8.8h-.1a.8.8 0 0 1-.8-.8v-2.4c0-.44.36-.8.8-.8Z"/></g><defs><clipPath id="td-c3"><rect width="20.9739" height="9.68024"/></clipPath></defs></svg>
+                  </span>
+                </div>
+                <div class="td__main">
+                  <div class="td__head">
+                    <div class="td__hi"><p class="td__hello">Good afternoon</p><p class="td__date">Tue, Sept 15</p></div>
+                    <span class="td__blank"></span>
+                    <span class="td__me"><span><svg viewBox="0 0 13.7137 13.7137" fill="none" stroke="#101014" stroke-width="1.143" stroke-linecap="round"><circle cx="6.857" cy="4.571" r="2.286"/><path d="M2.285 12c0-2.286 2-3.715 4.572-3.715S11.428 9.714 11.428 12"/></svg></span></span>
+                  </div>
+                  <div class="td__fit td__fit--sum"><div class="td__sum">
+                    <div class="td__stat"><b>37</b><span>Agent Actions<br>Done</span></div>
+                    <i class="td__rule"></i>
+                    <div class="td__stat td__stat--accent"><b>2</b><span>Needs your<br>approval<small>~1 min to clear</small></span></div>
+                  </div></div>
+                  <div class="td__label"><span>Needs action</span><span class="td__hint">swipe to decline</span></div>
+                  <div class="td__fit td__fit--c1"><div class="td__card">
+                    <div class="td__row"><span class="td__tagfit"><span class="td__tag">Ready to quote</span></span><b class="td__amt">$1159</b></div>
+                    <p class="td__who">Marcus Rivera · Lakeside Tech Q4 Retreat</p>
+                    <div class="td__note"><svg class="td__spark" viewBox="0 0 14.5204 14.5204"><rect width="14.5204" height="14.5204" rx="3.227" fill="#9F7CEF"/><path d="M4.33 8.57c-.18-.04-.59-.09-.67-.25-.26-.53.45-.57.76-.64l.91-.2c.25-.06.5-.1.73-.19.62-.25 1.1-.76 1.29-1.4.05-.17.1-.41.14-.59l.22-1c.04-.16.07-.34.12-.5a.33.33 0 0 1 .43-.18c.19.06.21.21.25.37l.09.42.2.92c.06.24.1.47.19.7.22.58.69 1.04 1.28 1.26.21.08.5.14.73.19l.98.21.27.06c.16.04.33.06.4.23.07.17 0 .39-.18.45-.13.05-.28.08-.42.11l-.72.15-.02.01-.45.1-.04.01-.09.02-.03.01c-.81.17-1.4.61-1.72 1.4-.09.22-.15.58-.2.82l-.23 1.05c-.04.16-.06.38-.2.48a.36.36 0 0 1-.26.06c-.28-.05-.28-.31-.34-.53l-.03-.15-.22-1.01c-.05-.23-.1-.5-.18-.71a2.3 2.3 0 0 0-.24-.47c-.45-.66-1.02-.86-1.76-1l-.04-.01-.1-.02-.04-.01-.2-.04-.04-.01-.12-.03-.05-.01-.19-.04-.06-.02-.09-.02Z" fill="#FFFFFF"/></svg><p>Marcus went cold in April. I noticed his company closed a Series B<br>last week, so I reached out. He replied in 2 hours.</p></div>
+                    <div class="td__btns"><span class="td__review">Review</span><span class="td__approve">Approve</span></div>
+                  </div></div>
+                  <div class="td__fit td__fit--c2"><div class="td__card td__card--tall">
+                    <div class="td__row"><span class="td__tagfit"><span class="td__tag">Ready to quote</span></span><b class="td__amt">$759</b></div>
+                    <p class="td__who">Sarah Chen · WeWork Austin Holiday Party</p>
+                    <div class="td__note"><svg class="td__spark" viewBox="0 0 14.5204 14.5204"><rect width="14.5204" height="14.5204" rx="3.227" fill="#9F7CEF"/><path d="M4.33 8.57c-.18-.04-.59-.09-.67-.25-.26-.53.45-.57.76-.64l.91-.2c.25-.06.5-.1.73-.19.62-.25 1.1-.76 1.29-1.4.05-.17.1-.41.14-.59l.22-1c.04-.16.07-.34.12-.5a.33.33 0 0 1 .43-.18c.19.06.21.21.25.37l.09.42.2.92c.06.24.1.47.19.7.22.58.69 1.04 1.28 1.26.21.08.5.14.73.19l.98.21.27.06c.16.04.33.06.4.23.07.17 0 .39-.18.45-.13.05-.28.08-.42.11l-.72.15-.02.01-.45.1-.04.01-.09.02-.03.01c-.81.17-1.4.61-1.72 1.4-.09.22-.15.58-.2.82l-.23 1.05c-.04.16-.06.38-.2.48a.36.36 0 0 1-.26.06c-.28-.05-.28-.31-.34-.53l-.03-.15-.22-1.01c-.05-.23-.1-.5-.18-.71a2.3 2.3 0 0 0-.24-.47c-.45-.66-1.02-.86-1.76-1l-.04-.01-.1-.02-.04-.01-.2-.04-.04-.01-.12-.03-.05-.01-.19-.04-.06-.02-.09-.02Z" fill="#FFFFFF"/></svg><p>Sarah tried to cancel at 9am. I restructured the quote, kept your<br>margin intact, she confirmed by noon and added their Q3<br>offsite in the same thread.</p></div>
+                    <div class="td__btns"><span class="td__review">Review</span><span class="td__approve">Approve</span></div>
+                  </div></div>
+                  <div class="td__label td__label--calls"><span>Prioritized calls</span></div>
+                  <div class="td__fit td__fit--calls"><div class="td__calls">
+                    <div class="td__fit td__fit--call"><div class="td__call"><p><b>Campaign<br>calls</b><small>Active campaigns</small></p><em>23</em></div></div>
+                    <div class="td__fit td__fit--call"><div class="td__call"><p><b>Follow-up<br>calls</b><small>Context-driven</small></p><em>32</em></div></div>
+                  </div></div>
+                  <div class="td__label td__label--act"><span>Agent activity</span><span class="td__hint">last 24 hours</span></div>
+                  <div class="td__fit td__fit--act"><div class="td__act">
+                    <div class="td__acthead"><span>Replies</span><span class="td__count">4</span><span class="td__chev">⌃</span></div>
+                    <div class="td__actlist">
+                      <div class="td__fit td__fit--item"><div class="td__item"><span class="td__ico"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 2v2.6a1.4 1.4 0 0 1-1.4 1.4H2m0 0 1.9-1.9M2 6l1.9 1.9"/></svg></span><p><b>Replied to Tom Becker</b><small>Operations Director · Meridian Law Headcount confirmed·</small></p><time>50 min ago</time></div></div>
+                      <div class="td__fit td__fit--item"><div class="td__item"><span class="td__ico"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 2v2.6a1.4 1.4 0 0 1-1.4 1.4H2m0 0 1.9-1.9M2 6l1.9 1.9"/></svg></span><p><b>Replied to Sarah Kim</b><small>Marketing Manager · BrightTech Solutions Headcount pending·</small></p><time>30 min ago</time></div></div>
+                      <div class="td__fit td__fit--item"><div class="td__item"><span class="td__ico"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 2v2.6a1.4 1.4 0 0 1-1.4 1.4H2m0 0 1.9-1.9M2 6l1.9 1.9"/></svg></span><p><b>Replied to James Patel</b><small>Product Lead · Innovate Corp Headcount confirmed·</small></p><time>15 min ago</time></div></div>
+                    </div>
+                  </div></div>
+                </div>
+              </div>
+              <span class="phone__island"></span>
+            </div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · How it works: pinned while it steps through the five capabilities -->
+    <section class="cap" id="how-it-works" aria-labelledby="cap-h">
+      <div class="cap__head">
+        <p class="cap__eyebrow">How it works</p>
+        <h2 id="cap-h">From first search to signed order.</h2>
+      </div>
+      <div class="cap__track">
+        <div class="cap__sticky">
+          <div class="cap__in">
+            <div class="cap__panel">
+              <video class="cap__vid is-on" muted playsinline loop preload="auto" poster="/assets/find.jpg" aria-hidden="true"><source src="/assets/find.mp4" type="video/mp4"><source src="/assets/find.webm" type="video/webm"></video>
+              <video class="cap__vid" muted playsinline loop preload="auto" poster="/assets/reconnect.jpg" aria-hidden="true"><source src="/assets/reconnect.mp4" type="video/mp4"><source src="/assets/reconnect.webm" type="video/webm"></video>
+              <video class="cap__vid" muted playsinline loop preload="auto" poster="/assets/reach.jpg" aria-hidden="true"><source src="/assets/reach.mp4" type="video/mp4"><source src="/assets/reach.webm" type="video/webm"></video>
+              <video class="cap__vid" muted playsinline loop preload="auto" poster="/assets/answer.jpg" aria-hidden="true"><source src="/assets/answer.mp4" type="video/mp4"><source src="/assets/answer.webm" type="video/webm"></video>
+              <video class="cap__vid" muted playsinline loop preload="auto" poster="/assets/close.jpg" aria-hidden="true"><source src="/assets/close.mp4" type="video/mp4"><source src="/assets/close.webm" type="video/webm"></video>
+            </div>
+            <div class="cap__list">
+              <span class="cap__dot" aria-hidden="true"></span>
+              <div class="cap__item is-on"><button class="cap__title" type="button" aria-current="step">Find</button>
+                <div class="cap__desc"><div><p>New catering-fit businesses within 30 miles of your restaurant location.</p></div></div></div>
+              <div class="cap__item"><button class="cap__title" type="button">Reconnect</button>
+                <div class="cap__desc"><div><p>Reconnect with lapsed customers in your database and win them back.</p></div></div></div>
+              <div class="cap__item"><button class="cap__title" type="button">Reach</button>
+                <div class="cap__desc"><div><p>Reach the right contacts through automated emails, calls, and SMS sequences.</p></div></div></div>
+              <div class="cap__item"><button class="cap__title" type="button">Answer</button>
+                <div class="cap__desc"><div><p>Answer every incoming query your restaurant receives through calls, emails, chatbots, and SMS.</p></div></div></div>
+              <div class="cap__item"><button class="cap__title" type="button">Close</button>
+                <div class="cap__desc"><div><p>Close orders in your POS, handling order customisations and generating quotes and invoices along the way.</p></div></div></div>
+              <div class="cap__progress" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <!-- 3 · Proof: RASA customer story (Cinematic Full-Screen Edge-to-Edge Transition) -->
+    <section class="proof" id="proof" aria-labelledby="proof-h">
+      <h2 class="vh" id="proof-h">RASA, a Kutlerri customer</h2>
+      <div class="proof__sticky">
+        <!-- Full-screen edge-to-edge background hero with bottom gradient mask -->
+        <div class="proof__bg">
+          <img class="proof__img" src="/assets/rasa.jpeg" alt="The RASA restaurant storefront" width="1500" height="1500" loading="eager">
+          <div class="proof__grad" aria-hidden="true"></div>
+        </div>
+
+        <!-- Testimonial content living naturally on the page background -->
+        <div class="proof__body">
+          <blockquote class="proof__quote">
+            <p>“Their Catering Agent finds the leads, runs the outreach, and books the orders. Their reporting layer surfaces the decisions we need to make, not just the data. They became the team we didn’t have to hire, a true extension of our operation, not just a vendor.”</p>
+            <footer class="proof__attribution">
+              <span class="proof__avatar" aria-hidden="true">
+                <img src="/assets/trey_rasa.jpeg" alt="Trey, CEO of RASA" class="proof__avatar-img" width="120" height="120" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class="proof__avatar-fallback" aria-hidden="true">T</span>
+              </span>
+              <div class="proof__by">
+                <cite class="proof__name">— Trey</cite>
+                <span class="proof__role">CEO, RASA</span>
+              </div>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · Outbound: the campaign film (the 45-second cut of
+         redesign/outbound). It plays while on screen, from the start the first
+         time; the button pauses it, and under reduced motion it waits on its
+         poster until someone presses play. -->
+    <section class="nobody" id="outbound" aria-labelledby="nobody-h">
+      <h2 class="nobody__h" id="nobody-h">Nobody is out selling your catering. We are.</h2>
+      <div class="nobody__card">
+        <video class="nobody__vid" muted playsinline loop preload="metadata" poster="/assets/outbound.jpg"
+               aria-label="Kutlerri finds 100 nearby catering buyers, runs one campaign, and turns a reply into a $680 paid order.">
+          <source src="/assets/outbound.mp4" type="video/mp4"><source src="/assets/outbound.webm" type="video/webm">
+        </video>
+        <button class="nobody__pp" type="button" aria-label="Pause the film">
+          <svg viewBox="0 0 16 16" aria-hidden="true" data-pause><rect x="3.5" y="2.5" width="3" height="11" rx="1"/><rect x="9.5" y="2.5" width="3" height="11" rx="1"/></svg>
+          <svg viewBox="0 0 16 16" aria-hidden="true" data-play hidden><path d="M4.5 2.9c0-.8.9-1.3 1.6-.8l7 4.6c.6.4.6 1.3 0 1.7l-7 4.6c-.7.5-1.6 0-1.6-.8V2.9Z"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- 5 · Inbound -->
+    <!-- 3 · Inbound, as a diagram: three branches (customer -> agent -> phone)
+       stay on screen throughout; one expands at a time. Connectors are drawn
+       in one SVG under the cards and behind the phone, and follow the ports as
+       rows move. Real text and real layout; inbound.js animates positions,
+       sizes and opacity over one clock. -->
+  <section class="ib" id="inbound" aria-labelledby="ib-h">
+    <div class="ib__in">
+      <div class="ib__head">
+        <p class="ib__eyebrow">Inbound</p>
+        <h2 id="ib-h">Every enquiry. One place to act.</h2>
+        <p class="ib__lede">Calls, messages, and website conversations become orders ready for your review.</p>
+      </div>
+
+      <div class="ib__stage">
+        <div class="ib__flow" data-flow>
+
+          <!-- Branch 1 · the call -->
+          <div class="ib-branch" data-branch="0">
+            <div class="ib-node"><span class="ib-node__face" data-face="4"><img alt=""></span><b>Customer</b></div>
+            <div class="ib-card" data-card tabindex="0" role="button" aria-label="Replay the call agent">
+              <div class="ib-card__head">
+                <span class="ib-mark"><img src="/images/app-icon.png" alt="Kutlerri" width="120" height="120"></span>
+                <span class="ib-ico" data-ico="phone" data-chico></span>
+                <b>Call<i class="ib-card__long"> agent</i></b>
+                <span class="ib-card__state" data-state><i></i><span data-statetext>Ready</span></span>
+              </div>
+              <p class="ib-card__hint" data-hint>Answers the phone, takes the order, and reads it back.</p>
+              <div class="ib-body">
+                <div class="ib-conv">
+                  <div class="ib-conv__bar">
+                    <span class="ib-live"><i></i>Live call</span>
+                    <span class="ib-wave" data-bars></span>
+                    <em data-timer>00:00</em>
+                  </div>
+                  <div class="ib-thread" data-thread>
+                    <div class="ib-thread__in" data-threadin>
+                      <div class="ib-bub ib-bub--in" data-turn>Hi, I’d like to arrange lunch for 25 people this Friday.</div>
+                      <div class="ib-bub ib-bub--ai" data-turn>Of course. What time would you like it delivered, and to which address?</div>
+                      <div class="ib-bub ib-bub--in" data-turn>12:30 pm, at 18 Park Street. Five meals should be vegetarian, with sauces packed separately.</div>
+                      <div class="ib-bub ib-bub--ai" data-turn>Got it: 25 lunches for Friday at 12:30, delivered to 18 Park Street, including five vegetarian meals and separate sauces. Is that correct?</div>
+                      <div class="ib-bub ib-bub--in" data-turn>Yes, that’s correct.</div>
+                      <div class="ib-bub ib-bub--ai" data-turn>Thank you. I’ll prepare the order for the restaurant to review.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ib-sum" data-sum>
+                <span>25 guests · Friday, 12:30</span><span>5 vegetarian · Sauces separate</span><span class="is-ok">Ready for review</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Branch 2 · email and SMS, one order -->
+          <div class="ib-branch" data-branch="1">
+            <div class="ib-node"><span class="ib-node__face" data-face="2"><img alt=""></span><b>Customer</b></div>
+            <div class="ib-card" data-card tabindex="0" role="button" aria-label="Replay the email and SMS agent">
+              <div class="ib-card__head">
+                <span class="ib-mark"><img src="/images/app-icon.png" alt="Kutlerri" width="120" height="120"></span>
+                <span class="ib-ico" data-ico="mail" data-chico></span>
+                <b>Email &amp; SMS<i class="ib-card__long"> agent</i></b>
+                <span class="ib-card__state" data-state><i></i><span data-statetext>Ready</span></span>
+              </div>
+              <p class="ib-card__hint" data-hint>Replies by email and SMS, keeping one order together.</p>
+              <div class="ib-body">
+                <div class="ib-conv">
+                  <div class="ib-conv__bar">
+                    <span class="ib-live"><i></i>Inbox</span>
+                    <em>One order, two channels</em>
+                  </div>
+                  <div class="ib-thread" data-thread>
+                    <div class="ib-thread__in" data-threadin>
+                      <div class="ib-bub ib-bub--in" data-turn><i class="ib-tag">Email</i>Hello, we need lunch for 18 people on Tuesday at 1 pm, delivered to 42 Lake Road. Can you include three vegetarian meals?</div>
+                      <div class="ib-bub ib-bub--ai" data-turn>Thanks. I have 18 lunches for Tuesday at 1 pm, including three vegetarian meals, delivered to 42 Lake Road. Are there any other dietary requests?</div>
+                      <div class="ib-bub ib-bub--in" data-turn>No other requests. Those details are correct.</div>
+                      <div class="ib-bub ib-bub--ai" data-turn>Thank you. I’ve prepared the request for restaurant review.</div>
+                      <div class="ib-bub ib-bub--in" data-turn><i class="ib-tag">SMS · same order</i>Could you also pack the sauces separately?</div>
+                      <div class="ib-bub ib-bub--ai" data-turn>Yes—I’ve added separate sauces to your request. The other details remain unchanged.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ib-sum" data-sum>
+                <span>18 guests · Tuesday, 1 pm</span><span>3 vegetarian · Sauces separate</span><span class="is-ok">Ready for review</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Branch 3 · the website chat -->
+          <div class="ib-branch" data-branch="2">
+            <div class="ib-node"><span class="ib-node__face" data-face="6"><img alt=""></span><b>Customer</b></div>
+            <div class="ib-card" data-card tabindex="0" role="button" aria-label="Replay the website chat agent">
+              <div class="ib-card__head">
+                <span class="ib-mark"><img src="/images/app-icon.png" alt="Kutlerri" width="120" height="120"></span>
+                <span class="ib-ico" data-ico="sms" data-chico></span>
+                <b>Website chat<i class="ib-card__long"> agent</i></b>
+                <span class="ib-card__state" data-state><i></i><span data-statetext>Ready</span></span>
+              </div>
+              <p class="ib-card__hint" data-hint>Answers the chat widget on your own website.</p>
+              <div class="ib-body">
+                <div class="ib-conv">
+                  <div class="ib-conv__bar">
+                    <span class="ib-live"><i></i>Chat widget</span>
+                    <em>yourrestaurant.com</em>
+                  </div>
+                  <div class="ib-thread" data-thread>
+                    <div class="ib-thread__in" data-threadin>
+                      <div class="ib-bub ib-bub--in" data-turn>I’d like to order lunch for 12 people on Monday.</div>
+                      <div class="ib-bub ib-bub--ai" data-turn>Certainly. Will you collect it, or would you like delivery?</div>
+                      <div class="ib-bub ib-bub--in" data-turn>Collection at noon. Two meals should be vegetarian.</div>
+                      <div class="ib-bub ib-bub--ai" data-turn>Understood: 12 lunches for collection on Monday at noon, including two vegetarian meals. Shall I submit that request?</div>
+                      <div class="ib-bub ib-bub--in" data-turn>Yes, please.</div>
+                      <div class="ib-bub ib-bub--ai" data-turn>Your request is ready for the restaurant to review.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ib-sum" data-sum>
+                <span>12 guests · Monday, 12 pm</span><span>Collection · 2 vegetarian</span><span class="is-ok">Ready for review</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ib__right">
+          <div class="phone ib__phone" role="img" aria-label="The Kutlerri app: three invoices awaiting approval, one from the call, one from email and SMS, one from the website chat.">
+            <span class="phone__btn phone__btn--action"></span>
+            <span class="phone__btn phone__btn--up"></span>
+            <span class="phone__btn phone__btn--down"></span>
+            <span class="phone__btn phone__btn--power"></span>
+            <div class="phone__body"><div class="phone__bezel"><div class="phone__screen">
+              <div class="ib-today">
+                <div class="tdy__status">
+                  <b>9:41</b>
+                  <span class="tdy__sys"><span data-ico="cell"></span><span data-ico="wifi"></span><span data-ico="batt"></span></span>
+                </div>
+                <div class="tdy__greet">
+                  <span><b>Good afternoon</b><p>Tue, Jun 16</p></span>
+                  <span class="tdy__me" data-ico="person"></span>
+                </div>
+                <div class="tdy__stats">
+                  <span class="tdy__stat"><b data-actions>12</b><em>Agent Actions Done</em></span>
+                  <i></i>
+                  <span class="tdy__stat tdy__stat--need">
+                    <b class="tdy__roll"><u data-need="0">0</u><u data-need="1">1</u><u data-need="2">2</u><u data-need="3">3</u><u data-need="4">4</u><u data-need="5">5</u><u data-need="6">6</u><u data-need="7">7</u><u data-need="8">8</u><u data-need="9">9</u></b>
+                    <em>Needs your approval<s>~1 min to clear</s></em>
+                  </span>
+                </div>
+                <div class="tdy__seclabel"><p>Needs action</p><em>swipe to decline</em></div>
+                <div class="tdy__list" data-list>
+                  <article class="tdy__card" data-inv="0">
+                    <div class="tdy__crow"><span class="tdy__tag">Ready to quote</span><b>$240</b></div>
+                    <h4>Erin Doyle · Team lunch, 16 guests</h4>
+                    <div class="tdy__note"><span class="tdy__spark" data-ico="spark"></span><p>Confirmed the delivery window with her yesterday evening.</p></div>
+                    <div class="tdy__btns"><span class="tdy__rev">Review</span><span class="tdy__app">Approve</span></div>
+                  </article>
+                  <article class="tdy__card" data-inv="1">
+                    <div class="tdy__crow"><span class="tdy__tag">Ready to quote</span><b>$130</b></div>
+                    <h4>Paul Rennick · Client dinner, 8 guests</h4>
+                    <div class="tdy__note"><span class="tdy__spark" data-ico="spark"></span><p>He moved the date once. The new time is in the request.</p></div>
+                    <div class="tdy__btns"><span class="tdy__rev">Review</span><span class="tdy__app">Approve</span></div>
+                  </article>
+                  <article class="tdy__card" data-inv="2">
+                    <div class="tdy__crow"><span class="tdy__tag">Ready to quote</span><b>$450</b></div>
+                    <h4>Claire Bennett · Office lunch, 30 guests</h4>
+                    <div class="tdy__note"><span class="tdy__spark" data-ico="spark"></span><p>Replied to her email in two minutes and confirmed the delivery window.</p></div>
+                    <div class="tdy__btns"><span class="tdy__rev">Review</span><span class="tdy__app">Approve</span></div>
+                  </article>
+                  <article class="tdy__card" data-inv="3">
+                    <div class="tdy__crow"><span class="tdy__tag">Ready to quote</span><b>$210</b></div>
+                    <h4>Tom Fischer · Site meeting, 14 guests</h4>
+                    <div class="tdy__note"><span class="tdy__spark" data-ico="spark"></span><p>He asked for a vegan option. I added it and held the price.</p></div>
+                    <div class="tdy__btns"><span class="tdy__rev">Review</span><span class="tdy__app">Approve</span></div>
+                  </article>
+                  <article class="tdy__card" data-inv="4">
+                    <div class="tdy__crow"><span class="tdy__tag">Ready to quote</span><b>$375</b></div>
+                    <h4>Nina Walsh · Friday lunch, 25 guests</h4>
+                    <div class="tdy__note"><span class="tdy__spark" data-ico="spark"></span><p>Answered the call, took the order and read it back: five vegetarian, sauces separate.</p></div>
+                    <div class="tdy__btns"><span class="tdy__rev">Review</span><span class="tdy__app">Approve</span></div>
+                  </article>
+                  <article class="tdy__card" data-inv="5">
+                    <div class="tdy__crow"><span class="tdy__tag">Ready to quote</span><b>$145</b></div>
+                    <h4>Beth Lawal · Board breakfast, 9 guests</h4>
+                    <div class="tdy__note"><span class="tdy__spark" data-ico="spark"></span><p>Followed up on last week’s enquiry and she confirmed this morning.</p></div>
+                    <div class="tdy__btns"><span class="tdy__rev">Review</span><span class="tdy__app">Approve</span></div>
+                  </article>
+                  <article class="tdy__card" data-inv="6">
+                    <div class="tdy__crow"><span class="tdy__tag">Ready to quote</span><b>$270</b></div>
+                    <h4>Hannah Dean · Tuesday lunch, 18 guests</h4>
+                    <div class="tdy__note"><span class="tdy__spark" data-ico="spark"></span><p>Replied by email, then by SMS when she added sauces. One order, one invoice.</p></div>
+                    <div class="tdy__btns"><span class="tdy__rev">Review</span><span class="tdy__app">Approve</span></div>
+                  </article>
+                  <article class="tdy__card" data-inv="7">
+                    <div class="tdy__crow"><span class="tdy__tag">Ready to quote</span><b>$580</b></div>
+                    <h4>Marcus Reed · Staff training, 40 guests</h4>
+                    <div class="tdy__note"><span class="tdy__spark" data-ico="spark"></span><p>She raised the headcount twice, so I requoted for 40.</p></div>
+                    <div class="tdy__btns"><span class="tdy__rev">Review</span><span class="tdy__app">Approve</span></div>
+                  </article>
+                  <article class="tdy__card" data-inv="8">
+                    <div class="tdy__crow"><span class="tdy__tag">Ready to quote</span><b>$180</b></div>
+                    <h4>Leo Martins · Monday collection, 12 guests</h4>
+                    <div class="tdy__note"><span class="tdy__spark" data-ico="spark"></span><p>Answered the chat on your website and confirmed collection at noon.</p></div>
+                    <div class="tdy__btns"><span class="tdy__rev">Review</span><span class="tdy__app">Approve</span></div>
+                  </article>
+                </div>
+                <div class="tdy__seclabel tdy__seclabel--tight"><p>Prioritized calls</p></div>
+                <div class="tdy__calls">
+                  <span><b>Campaign calls</b><em>Active campaigns</em><u>23</u></span>
+                  <span><b>Follow-up calls</b><em>Context-driven</em><u>32</u></span>
+                </div>
+                <div class="tdy__seclabel"><p>Agent activity</p><em>last 24 hours</em></div>
+                <div class="tdy__act">
+                  <div class="tdy__acthead"><b>Replies</b><span><u>4</u><i data-ico="chev"></i></span></div>
+                  <div class="tdy__actrow"><span class="tdy__actico" data-ico="reply"></span><span><b>Replied to Tom Becker</b><em>Operations Director · Meridian Law Headcount confirmed</em></span><i>50 min ago</i></div>
+                  <div class="tdy__actrow"><span class="tdy__actico" data-ico="reply"></span><span><b>Replied to Sarah Kim</b><em>Marketing Manager · BrightTech Solutions Headcount pending</em></span><i>30 min ago</i></div>
+                </div>
+              </div>
+              <span class="phone__island"></span>
+            </div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+    <!-- 6 · Managed service: the agent and the people, side by side. No
+         icons or logos; the lists are ruled rows. -->
+    <section class="managed" aria-labelledby="managed-h">
+      <div class="managed__in">
+        <header class="managed__head">
+          <p class="managed__eyebrow">Fully managed service</p>
+          <h2 id="managed-h">We don’t just leave you with a <em>login</em>.</h2>
+          <p class="managed__lede">The agent delivers the speed, humans deliver the judgement.</p>
+        </header>
+        <div class="managed__cards">
+          <article class="mcard">
+            <span class="mcard__tag">The agent · 24/7</span>
+            <h3>We run the whole channel</h3>
+            <p class="mcard__sub">Run by the agent, around the clock</p>
+            <ul>
+              <li>Every company within 30 miles, contacted</li>
+              <li>Every call, chat, form and email, answered</li>
+              <li>Every quote &amp; invoice, drafted</li>
+            </ul>
+          </article>
+          <article class="mcard mcard--human">
+            <span class="mcard__tag">Real humans</span>
+            <h3>Human in the loop</h3>
+            <p class="mcard__sub">People take the decisions, wherever required</p>
+            <ul>
+              <li>An actual catering sales team, making the calls</li>
+              <li>Working your menu, your radius, your prices</li>
+              <li>No hiring, no training, no new process</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 · Stop-motion: orders stacking up on the tablecloth, full width,
+         between the managed service and the footer. Decorative, so hidden from
+         assistive tech; it plays only while on screen. -->
+    <div class="spread" aria-hidden="true">
+      <video class="spread__vid" muted playsinline loop preload="metadata" poster="/assets/stop-motion.jpg">
+        <source src="/assets/stop-motion.mp4" type="video/mp4"><source src="/assets/stop-motion.webm" type="video/webm">
+      </video>
+    </div>
+
+
+    <!-- 9 · Encore: the RASA story again as the closing page. Same frame, same
+         words as section 3; the transition runs the other way. Instead of the
+         picture dissolving from the bottom up, the film retracts into a
+         rounded plate as the viewport lets go of it, and the quote lands one
+         word at a time out of a blur. proof-encore.js drives all of it from
+         one scroll clock. -->
+    <section class="encore" id="encore" aria-labelledby="encore-h">
+      <h2 class="vh" id="encore-h">RASA, a Kutlerri customer</h2>
+      <div class="encore__sticky">
+        <!-- The plate: full bleed at the start, an inset rounded frame by the end -->
+        <div class="encore__plate">
+          <img class="encore__img" src="/assets/rasa.jpeg" alt="The RASA restaurant storefront" width="1500" height="1500" loading="lazy">
+          <div class="encore__veil" aria-hidden="true"></div>
+        </div>
+
+        <!-- The testimonial, landing in the ground the plate gives up -->
+        <div class="encore__body">
+          <blockquote class="encore__quote">
+            <p class="encore__words">&ldquo;Their Catering Agent finds the leads, runs the outreach, and books the orders. Their reporting layer surfaces the decisions we need to make, not just the data. They became the team we didn&rsquo;t have to hire, a true extension of our operation, not just a vendor.&rdquo;</p>
+            <footer class="encore__attribution">
+              <span class="encore__avatar" aria-hidden="true">
+                <img src="/assets/trey_rasa.jpeg" alt="Trey, CEO of RASA" class="encore__avatar-img" width="120" height="120" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class="encore__avatar-fallback" aria-hidden="true">T</span>
+              </span>
+              <div class="encore__by">
+                <cite class="encore__name">&mdash; Trey</cite>
+                <span class="encore__role">CEO, RASA</span>
+              </div>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 · Footer: the live site's footer (Website/src/index.html), one of
+         the two brand anchors, carried over as it is. -->
+    <footer class="foot">
+      <div class="foot__in">
+        <div class="foot__grid">
+          <div class="foot__brand">
+            <a class="foot__logo" href="#top"><img src="/images/logo-footer.png" alt="Kutlerri.ai — home" width="132" height="26"></a>
+            <p class="foot__tag">Restaurant growth, backed by data.</p>
+            <div class="foot__btns">
+              <a class="foot__btn foot__btn--solid" href="#start">Get a demo</a>
+              <a class="foot__btn foot__btn--line" href="#start">Contact us</a>
+            </div>
+            <p class="foot__co">Copyright &copy; 2026<br>Kutlerri Tech Corporation</p>
+          </div>
+          <div class="foot__col">
+            <h4>Our agents</h4>
+            <a href="#more">Revenue Growth Agents</a>
+            <a href="#more">Cost Control Agents</a>
+            <a href="#more">New Store Expansion Agents</a>
+          </div>
+          <div class="foot__col">
+            <h4>Company</h4>
+            <a href="#trust">About us</a>
+          </div>
+          <div class="foot__col">
+            <h4>Legal</h4>
+            <a href="#">Privacy policy</a>
+            <a href="#">Terms &amp; conditions</a>
+          </div>
+          <div class="foot__col">
+            <h4>Connect</h4>
+            <div class="foot__soc">
+              <a href="#" aria-label="Kutlerri on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11.1 21 14.3V21h-4v-5.9c0-1.4-.03-3.2-1.95-3.2-1.96 0-2.26 1.53-2.26 3.1V21H9z"/></svg></a>
+              <a href="#" aria-label="Kutlerri on Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5.2" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.9"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>

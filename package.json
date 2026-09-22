@@ -1,0 +1,24 @@
+{
+  "name": "kutlerri-site",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Kutlerri.ai marketing site: the home page, the inbound diagram and the How it works review board.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "fonts": "node scripts/fetch-fonts.mjs",
+    "shots": "node scripts/shots.mjs",
+    "measure:hero": "node scripts/measure-hero.mjs",
+    "shots:inbound": "node scripts/shots-inbound.mjs",
+    "check:inbound": "node scripts/live-check.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "playwright-core": "^1.63.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7"
+  }
+}
