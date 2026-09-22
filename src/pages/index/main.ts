@@ -22,6 +22,7 @@ import * as outboundFilm from '../../lib/outbound-film';
 import * as inboundDiagram from '../../lib/inbound-diagram';
 import * as proofStory from '../../lib/proof-story';
 import * as proofEncore from '../../lib/proof-encore';
+import * as managedGlow from '../../lib/managed-glow';
 
 hero.init();
 howItWorks.init();
@@ -30,3 +31,4 @@ outboundFilm.init();
 inboundDiagram.init();
 proofStory.init();
 proofEncore.init();
+managedGlow.init();

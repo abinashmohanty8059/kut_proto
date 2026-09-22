@@ -574,15 +574,15 @@ body { background: #FAF7F1; }
 }
 .managed::before,
 .managed::after { content: ''; position: absolute; pointer-events: none; }
-/* The wash the glass picks up: purple under the people card, a cooler
-   cast under the agent card. */
+/* The wash the glass picks up. It is cool, not purple: at rest the section
+   carries no purple ground at all, so the only purple behind a card is the
+   one the cursor brings with it. */
 .managed::before {
   inset: 0;
   background:
-    radial-gradient(30% 34% at 74% 68%, rgba(159, 124, 239, .44), rgba(159, 124, 239, 0) 68%),
-    radial-gradient(24% 28% at 54% 94%, rgba(122, 98, 232, .20), rgba(122, 98, 232, 0) 70%),
+    radial-gradient(30% 34% at 76% 70%, rgba(104, 136, 232, .16), rgba(104, 136, 232, 0) 70%),
     radial-gradient(30% 34% at 22% 76%, rgba(104, 136, 232, .20), rgba(104, 136, 232, 0) 70%),
-    radial-gradient(60% 34% at 50% 6%, rgba(159, 124, 239, .07), rgba(159, 124, 239, 0) 72%);
+    radial-gradient(24% 28% at 54% 94%, rgba(120, 132, 214, .12), rgba(120, 132, 214, 0) 70%);
 }
 /* A hairline of light along the top edge, so the section reads as its own
    plane rather than a change of colour. */
@@ -601,7 +601,44 @@ body { background: #FAF7F1; }
 
 /* The two cards share row tracks (subgrid), so tag, title, subline and
    list line up across them even when a subline wraps. */
-.managed__cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto 1fr; gap: 16px 20px; margin-top: 60px; }
+.managed__cards { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto 1fr; gap: 16px 20px; margin-top: 60px; }
+
+/* The cursor light. It is a child of the grid, before either card in paint
+   order, so the people card's backdrop-filter blurs it: the purple reads as
+   light behind the glass rather than a colour printed on it. managed-glow.ts
+   gives it that card's box and the pointer inside it, so it can never show
+   anywhere else on the section. */
+.managed__cards::before {
+  content: '';
+  position: absolute;
+  left: var(--glow-l, 0px);
+  top: var(--glow-t, 0px);
+  width: var(--glow-w, 0px);
+  height: var(--glow-h, 0px);
+  border-radius: 26px;
+  /* Four ellipses rather than one circle, each on its own offset from the
+     cursor and each drifting on its own slow sine (--glow-d*, written by
+     managed-glow.ts), so the edge undulates instead of reading as a ring.
+     The violets are light and cool; the glass darkens whatever it blurs. */
+  background:
+    radial-gradient(ellipse 200px 128px
+      at calc(var(--glow-x, 50%) - 58px + var(--glow-dx1, 0px)) calc(var(--glow-y, 50%) - 40px + var(--glow-dy1, 0px)),
+      rgba(178, 152, 251, .95), rgba(178, 152, 251, 0) 72%),
+    radial-gradient(ellipse 142px 216px
+      at calc(var(--glow-x, 50%) + 46px + var(--glow-dx2, 0px)) calc(var(--glow-y, 50%) + 22px + var(--glow-dy2, 0px)),
+      rgba(167, 139, 250, .82), rgba(167, 139, 250, 0) 74%),
+    radial-gradient(ellipse 272px 116px
+      at calc(var(--glow-x, 50%) + 14px + var(--glow-dx2, 0px)) calc(var(--glow-y, 50%) + 84px + var(--glow-dy1, 0px)),
+      rgba(196, 181, 253, .78), rgba(196, 181, 253, 0) 76%),
+    radial-gradient(ellipse 126px 150px
+      at calc(var(--glow-x, 50%) - 6px + var(--glow-dy2, 0px)) calc(var(--glow-y, 50%) + 2px + var(--glow-dx1, 0px)),
+      rgba(206, 192, 255, .92), rgba(206, 192, 255, 0) 70%);
+  opacity: var(--glow, 0);
+  transition: opacity .3s ease;
+  pointer-events: none;
+}
+/* Nothing to follow without a pointer. */
+@media (hover: none) { .managed__cards::before { content: none; } }
 .mcard {
   position: relative;
   display: grid;
@@ -644,23 +681,8 @@ body { background: #FAF7F1; }
     0 1px 2px rgba(25, 23, 29, .05),
     0 40px 74px -34px rgba(25, 23, 29, .34);
 }
-.mcard--human {
-  background: linear-gradient(158deg, rgba(159, 124, 239, .22) 0%, rgba(159, 124, 239, .07) 52%, rgba(255, 255, 255, .34) 100%);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, .62),
-    inset 0 1px 0 rgba(255, 255, 255, .92),
-    inset 0 -14px 26px -20px rgba(74, 46, 140, .22),
-    0 1px 2px rgba(74, 46, 140, .06),
-    0 30px 62px -34px rgba(106, 63, 224, .42);
-}
-.mcard--human::after { box-shadow: inset 0 0 0 1px rgba(122, 82, 217, .16); }
-.mcard--human:hover {
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, .72),
-    inset 0 1px 0 rgba(255, 255, 255, 1),
-    0 1px 2px rgba(74, 46, 140, .07),
-    0 42px 78px -34px rgba(106, 63, 224, .5);
-}
+.mcard--human::after { box-shadow: inset 0 0 0 1px rgba(122, 82, 217, .1); }
+.mcard--human:hover::after { box-shadow: inset 0 0 0 1px rgba(122, 82, 217, .26); }
 
 /* Everything from the tag down sits above the sheen. */
 .mcard > * { position: relative; z-index: 1; }
@@ -696,7 +718,6 @@ body { background: #FAF7F1; }
    go opaque enough to keep the type legible. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .mcard { background: linear-gradient(158deg, rgba(255, 255, 255, .96), rgba(255, 255, 255, .9)); }
-  .mcard--human { background: linear-gradient(158deg, #EDE4FD, #F7F2FE); }
   .mcard__tag { background: #FFFFFF; }
 }
 
